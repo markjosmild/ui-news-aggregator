@@ -10,12 +10,13 @@ const navs = ref([
   { name: 'create post', path: { name: 'post' } },
   { name: 'sign in', path: { name: 'auth' } }
 ])
+
 </script>
 
 <template>
-    <div class="bg-black p-5 uppercase font-semibold text-white flex items-center justify-center gap-5">
+    <div class="bg-blue-950 p-5 uppercase font-semibold text-white flex items-center justify-center gap-5">
         <router-link v-for="(nav, idx) in navs" :key="idx" :to="nav.path">
-            <span :class="`hover:text-yellow-500 ${route.name === nav.path.name && 'text-yellow-400'}`">
+            <span :class="`hover:text-red-500 ${route.name === nav.path.name && 'text-red-500'}`">
                 {{ nav.name }}
             </span>
         </router-link>
