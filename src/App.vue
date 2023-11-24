@@ -1,15 +1,16 @@
 <script setup>
-import { ref } from 'vue'
-import { useRoute } from 'vue-router'
-import NavBar from './components/the/NavBar.vue'
+import { useAuthStore } from './stores/authStore'
 
+const authStore = useAuthStore()
+
+if (window.localStorage.token) {
+  authStore.getAuth()
+}
 </script>
 
 <template>
-  <div class="">
-    <nav-bar />
-    <router-view />
-  </div>
+    <div>
+        <nav-bar />
+        <router-view />
+    </div>
 </template>
-
-<style scoped></style>
