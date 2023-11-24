@@ -26,7 +26,9 @@ const newsList = ref([
 
 <template>
   <div class="min-h-screen flex flex-col items-center">
-    <div v-for="(news, idx) in newsList" :key="idx" class="w-1/2">
+    <div class="w-1/2">
+      <h1 class="font-bold text-3xl pt-5">Fresh news for you...</h1>
+      <div v-for="(news, idx) in newsList" :key="idx">
       <div class="pt-10">
         <div class="flex items-center gap-2 text-sm">
           <div class="bg-green-500 w-10 h-10 rounded-full font-bold border border-black flex items-center justify-center">
@@ -44,6 +46,7 @@ const newsList = ref([
           </p>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </template>
