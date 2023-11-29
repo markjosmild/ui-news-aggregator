@@ -2,6 +2,7 @@
 </script>
 
 <template>
+  <nav-bar />
   <div>
     news
   </div>
