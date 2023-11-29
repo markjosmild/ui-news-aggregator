@@ -1,6 +1,5 @@
 // libs
 import axios from 'axios'
-import _ from 'lodash'
 
 export const ServerApi = (
   () => {
@@ -23,11 +22,7 @@ export const ServerApi = (
     instance.interceptors.response.use(
       config => config,
       error => {
-        const statusCode = _.get(error, 'response.status')
-
-        if (statusCode === 401) {
-          window.localStorage.clear()
-        }
+        window.localStorage.clear()
 
         return Promise.reject(error)
       }
