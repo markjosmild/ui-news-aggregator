@@ -1,4 +1,26 @@
 <script setup>
+import { ref } from 'vue'
+import { useAuthStore } from '../stores/authStore'
+import { useNewsStore } from '../stores/newsStore'
+
+const authStore = useAuthStore()
+const newsStore = useNewsStore()
+
+const news = ref({
+  user_id: '',
+  title: '',
+  content: ''
+})
+
+async function handlePost () {
+  try {
+    news.value.user_id = authStore.auth.id
+    const data = await newsStore.create(news.value)
+    console.log(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 </script>
 
@@ -13,6 +35,7 @@
         <label>
           <input
             type="text"
+            v-model="news.title"
             class="bg-black w-full h-7 rounded-md py-3 pl-3 pr-3 text-white"
             placeholder="Enter news Title" />
         </label>
@@ -22,13 +45,14 @@
         <span class="text-sm">Formulate the title so that it is immediate clear what it is about.</span>
         <div class="h-72 border border-black pb-10">
           <quill-editor
+          v-model:content="news.content"
           content-type="html"
           placeholder="Enter some text here..."
           />
         </div>
       </div>
       <div class="">
-        <button class="bg-black text-white px-4 py-2 rounded uppercase font-bold text-xs">Publish News</button>
+        <button class="bg-black text-white px-4 py-2 rounded uppercase font-bold text-xs" @click.prevent="handlePost()">Publish News</button>
       </div>
     </div>
   </div>

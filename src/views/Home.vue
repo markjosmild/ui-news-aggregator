@@ -1,26 +1,14 @@
 <script setup>
-import { ref } from 'vue'
+import { onMounted } from 'vue'
+import { useNewsStore } from '../stores/newsStore'
 
-const newsList = ref([
-  {
-    first_name: 'Artem',
-    last_name: 'Gladkob',
-    title: 'Electronic Arts Lorem ipsum dolor sit amet.',
-    content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum, rem repudiandae! Eos deserunt laborum eaque. Mollitia unde alias vitae iure?...'
-  },
-  {
-    first_name: 'Artem',
-    last_name: 'Gladkob',
-    title: 'Electronic Arts Lorem ipsum dolor sit amet.',
-    content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum, rem repudiandae! Eos deserunt laborum eaque. Mollitia unde alias vitae iure?...'
-  },
-  {
-    first_name: 'Artem',
-    last_name: 'Gladkob',
-    title: 'Electronic Arts Lorem ipsum dolor sit amet.',
-    content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum, rem repudiandae! Eos deserunt laborum eaque. Mollitia unde alias vitae iure?...'
-  }
-])
+import moment from 'moment'
+
+const newsStore = useNewsStore()
+
+onMounted(() => {
+  newsStore.get()
+})
 
 </script>
 
@@ -29,22 +17,23 @@ const newsList = ref([
   <div class="min-h-screen flex flex-col items-center">
     <div class="w-1/2">
       <h1 class="font-bold text-3xl pt-5">Fresh news for you...</h1>
-      <div v-for="(news, idx) in newsList" :key="idx">
-      <div class="pt-10">
-        <div class="flex items-center gap-2 text-sm">
-          <div class="bg-green-500 w-10 h-10 rounded-full font-bold border border-black flex items-center justify-center">
-            AG
+      <div class="pt-10" v-for="(news, idx) in newsStore.list" :key="idx">
+        <div class="relative">
+          <div class="flex items-center gap-2 text-sm">
+          <div :class="idx%2 == 0 ? `bg-green-500`:'bg-green-500'" class="w-10 h-10 rounded-full font-bold border border-black flex items-center justify-center">
+            {{ `${news.user.first_name.charAt(0) + news.user.last_name.charAt(0)}` }}
           </div>
           <div class="flex flex-col">
-            <span class="font-bold">{{ `${news.first_name} ${news.last_name}` }}</span>
-            <span>October 8, 2022</span>
+            <span class="font-bold capitalize">{{ `${news.user.first_name} ${news.user.last_name}` }}</span>
+            <span>{{ moment(news.created_at).format('MMMM Do YYYY, h:mm a') }}</span>
           </div>
+          <div class="absolute top-0 right-0 font-bold" :key="idx">
+            <span>...</span>
+        </div>
         </div>
         <div class="flex flex-col pt-5 gap-5">
           <h1 class="text-2xl font-bold">{{ news.title }}</h1>
-          <p>
-            {{ news.content }}
-          </p>
+          <div v-html="news.content"></div>
         </div>
       </div>
     </div>
