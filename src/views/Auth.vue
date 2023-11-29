@@ -26,8 +26,9 @@ const user = ref({
 async function handleRegister () {
   try {
     const data = await authStore.register(user.value.register)
-
     console.log(data)
+
+    isSignUp.value = false
   } catch (error) {
     console.log(error)
   }
