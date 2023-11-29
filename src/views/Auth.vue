@@ -155,7 +155,7 @@ async function handleLogin () {
                 <p>Already have an account? <span class="text-green-500 cursor-pointer" @click="isSignUp = !isSignUp">Sign In</span></p>
             </form>
         </div>
-        <div class="w-1/2 flex items-center justify-center bg-slate-700">
+        <div class="w-1/2 flex items-center justify-center bg-black">
             <img src="../assets/img.png" />
         </div>
     </div>
