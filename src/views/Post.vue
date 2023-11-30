@@ -24,7 +24,7 @@ async function handlePost () {
 
       Swal.fire({
         title: 'Success',
-        text: 'Registered Succesfully',
+        text: 'Posted Succesfully',
         icon: 'success'
       })
     }
