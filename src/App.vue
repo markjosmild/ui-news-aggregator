@@ -15,5 +15,5 @@ if (window.localStorage.token) {
 </script>
 
 <template>
-    <router-view />
+  <router-view />
 </template>
