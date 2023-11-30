@@ -13,11 +13,15 @@ const news = ref({
   content: ''
 })
 
+const errorMessage = ref(null)
+
 async function handlePost () {
   try {
     news.value.user_id = authStore.auth.id
     const data = await newsStore.create(news.value)
     if (data) {
+      errorMessage.value = null
+
       Swal.fire({
         title: 'Success',
         text: 'Registered Succesfully',
@@ -26,7 +30,7 @@ async function handlePost () {
     }
     console.log(data)
   } catch (error) {
-    console.log(error)
+    errorMessage.value = error.response.data
   }
 }
 
@@ -61,6 +65,7 @@ async function handlePost () {
         </div>
       </div>
       <div class="">
+        <p class="text-red-500 text-sm">{{ errorMessage }}</p>
         <button
           class="bg-black text-white px-4 py-2 rounded uppercase font-bold text-xs"
           @click.prevent="handlePost()"
