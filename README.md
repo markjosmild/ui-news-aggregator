@@ -10,4 +10,14 @@ https://icon-sets.iconify.design/mdi/user/ -->
 
 frontend ui news aggregator
 
-image.png
+REGISTRATION PAGE
+![alt text](http://https://github.com/markjosmild/ui-news-aggregator/blob/main/public/assets/registration.PNG)
+
+LOGIN PAGE
+
+HOME
+
+POST NEWS
+
+MY NEWS
+
