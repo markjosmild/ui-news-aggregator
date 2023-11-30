@@ -42,6 +42,7 @@ async function handleRegister () {
         text: 'Registered Succesfully',
         icon: 'success'
       })
+      errorMessage.value = null
     }
   } catch (error) {
     errorMessage.value = error.response.data
@@ -54,6 +55,7 @@ async function handleLogin () {
     localStorage.token = data
 
     await authStore.getAuth()
+    errorMessage.value = null
     router.push('/')
   } catch (error) {
     errorMessage.value = error.response.data
@@ -163,6 +165,7 @@ function handlePage () {
             :modelValue="user.register.city"
             @update:modelValue="(v) => user.register.city = v"
           />
+          <p class="text-red-500 pt-0">{{ errorMessage }}</p>
         </div>
         <base-buton
           label="sign Up"
