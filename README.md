@@ -14,10 +14,14 @@ REGISTRATION PAGE
 ![alt text](https://github.com/markjosmild/ui-news-aggregator/blob/main/public/assets/registration.PNG?raw=true)
 
 LOGIN PAGE
+![alt text](https://github.com/markjosmild/ui-news-aggregator/blob/main/public/assets/login.PNG?raw=true)
 
 HOME
+![alt text](https://github.com/markjosmild/ui-news-aggregator/blob/main/public/assets/home.PNG?raw=true)
 
 POST NEWS
+![alt text](https://github.com/markjosmild/ui-news-aggregator/blob/main/public/assets/post_news.PNG?raw=true)
 
 MY NEWS
+![alt text](https://github.com/markjosmild/ui-news-aggregator/blob/main/public/assets/your_news.PNG?raw=true)
 
