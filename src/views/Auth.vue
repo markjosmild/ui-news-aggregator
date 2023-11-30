@@ -94,7 +94,7 @@ function handlePage () {
           />
           <p class="text-red-500 pt-0">{{ errorMessage }}</p>
         </div>
-        <p class="text-xs">Forgot your Password?</p>
+        <!-- <p class="text-xs">Forgot your Password?</p> -->
         <base-buton
           label="sign in"
           @click.prevent="handleLogin()"

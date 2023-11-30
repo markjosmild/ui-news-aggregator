@@ -22,7 +22,9 @@ export const ServerApi = (
     instance.interceptors.response.use(
       config => config,
       error => {
-        window.localStorage.clear()
+        if (error.response.status === 401) {
+          window.localStorage.clear()
+        }
 
         return Promise.reject(error)
       }
