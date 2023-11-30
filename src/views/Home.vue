@@ -1,7 +1,6 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useNewsStore } from '../stores/newsStore'
-
 import moment from 'moment'
 
 const newsStore = useNewsStore()
@@ -25,8 +24,8 @@ onMounted(() => {
         <div class="relative">
           <div class="flex items-center gap-2 text-sm">
             <div
-              :class="idx%2 == 0 ? `bg-green-500`:'bg-green-500'"
-              class="w-10 h-10 rounded-full font-bold border border-black flex items-center justify-center"
+              :class="idx%2 == 0 ? `bg-gray-500`:'bg-gray-500'"
+              class="w-10 h-10 rounded-full font-bold flex items-center justify-center"
             >
               {{ `${news.user.first_name.charAt(0) + news.user.last_name.charAt(0)}` }}
             </div>
@@ -35,12 +34,6 @@ onMounted(() => {
                 {{ `${news.user.first_name} ${news.user.last_name}` }}
               </span>
               <span>{{ moment(news.created_at).format('MMMM Do YYYY, h:mm a') }}</span>
-            </div>
-            <div
-              class="absolute top-0 right-0 font-bold"
-              :key="idx"
-            >
-              <span>...</span>
             </div>
           </div>
           <div class="flex flex-col pt-5 gap-5">
