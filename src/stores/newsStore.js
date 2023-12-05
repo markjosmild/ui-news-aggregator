@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { ServerApi } from '../config/axios'
+import axios from 'axios'
 
 export const useNewsStore = defineStore('newsStore', () => {
   const list = ref([])
@@ -25,9 +26,16 @@ export const useNewsStore = defineStore('newsStore', () => {
     return data
   }
 
+  async function getFromExternalAPI () {
+    const { data } = await axios.get('https://newsapi.org/v2/top-headlines?country=ph&apiKey=b88b7d256f884e87ad5b59eb4eab5a39')
+
+    return data
+  }
+
   return {
     create,
     get,
+    getFromExternalAPI,
     list
   }
 })

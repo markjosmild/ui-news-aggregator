@@ -18,6 +18,12 @@ function handleSignout () {
 
 <template>
   <div :class="`bg-black text-sm uppercase font-semibold text-white flex flex-row items-center justify-center gap-10 border-b-2`">
+    <div class="relative w-10 h-9">
+      <router-link
+        class="absolute right-96 font-bold"
+        :to="{name: 'find-news'}"
+      >Find News</router-link>
+    </div>
     <router-link :to="{name: 'home'}">Home</router-link>
     <div class="bg-white text-black py-5 px-36">
       <h1>NEWS AGGREGATOR</h1>
