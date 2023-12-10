@@ -79,21 +79,35 @@ function handlePage () {
         <h1 class="font-bold text-4xl">Sign In to <h1 class="text-blue-500">News Aggregator!</h1>
         </h1>
         <div class="flex flex-col gap-3 w-full">
-          <base-input
-            :error="errorMessage"
-            icon="mdi:user"
-            label="Username"
-            :modelValue="user.login.username"
-            @update:modelValue="(v) => user.login.username = v"
-          />
-          <base-input
-            type="password"
-            :modelValue="user.login.password"
-            :error="errorMessage"
-            icon="mdi:password"
-            label="Password"
-            @update:modelValue="(v) => user.login.password = v"
-          />
+          <div class="relative block">
+            <span class="absolute top-4 left-3">
+              <Icon
+                icon="mdi:user"
+                class="w-5 h-5 text-slate-950"
+              />
+            </span>
+            <input
+              :class="errorMessage ? 'border border-red-500 ' : 'border border-slate-300 '"
+              class="bg-gray-100 w-full h-12 rounded-md py-2 pl-9 pr-3"
+              :placeholder="`Enter your Username`"
+              v-model="user.login.username"
+            >
+          </div>
+          <div class="relative block">
+            <span class="absolute top-4 left-3">
+              <Icon
+                icon="mdi:password"
+                class="w-5 h-5 text-slate-950"
+              />
+            </span>
+            <input
+              type="password"
+              :class="errorMessage ? 'border border-red-500 ' : 'border border-slate-300 '"
+              class="bg-gray-100 w-full h-12 rounded-md py-2 pl-9 pr-3"
+              :placeholder="`Enter your Password`"
+              v-model="user.login.password"
+            >
+          </div>
           <p class="text-red-500 pt-0">{{ errorMessage }}</p>
         </div>
         <!-- <p class="text-xs">Forgot your Password?</p> -->
@@ -115,7 +129,109 @@ function handlePage () {
         <h1 class="font-bold text-4xl">Sign Up to <h1 class="text-blue-500">News Aggregator!</h1>
         </h1>
         <div class="flex flex-col gap-3 w-full">
-          <base-input
+          <div class="relative block">
+            <span class="absolute top-4 left-3">
+              <Icon
+                icon="mdi:user"
+                class="w-5 h-5 text-slate-950"
+              />
+            </span>
+            <input
+              :class="errorMessage ? 'border border-red-500 ' : 'border border-slate-300 '"
+              class="bg-gray-100 w-full h-12 rounded-md py-2 pl-9 pr-3"
+              :placeholder="`Enter your Username`"
+              v-model="user.register.username"
+            >
+          </div>
+          <div class="relative block">
+            <span class="absolute top-4 left-3">
+              <Icon
+                icon="mdi:password"
+                class="w-5 h-5 text-slate-950"
+              />
+            </span>
+            <input
+              type="password"
+              :class="errorMessage ? 'border border-red-500 ' : 'border border-slate-300 '"
+              class="bg-gray-100 w-full h-12 rounded-md py-2 pl-9 pr-3"
+              :placeholder="`Enter your Password`"
+              v-model="user.register.password"
+            >
+          </div>
+          <div class="relative block">
+            <span class="absolute top-4 left-3">
+              <Icon
+                icon="mdi:user"
+                class="w-5 h-5 text-slate-950"
+              />
+            </span>
+            <input
+              :class="errorMessage ? 'border border-red-500 ' : 'border border-slate-300 '"
+              class="bg-gray-100 w-full h-12 rounded-md py-2 pl-9 pr-3"
+              :placeholder="`Enter your First Name`"
+              v-model="user.register.first_name"
+            >
+          </div>
+          <div class="relative block">
+            <span class="absolute top-4 left-3">
+              <Icon
+                icon="mdi:user"
+                class="w-5 h-5 text-slate-950"
+              />
+            </span>
+            <input
+              :class="errorMessage ? 'border border-red-500 ' : 'border border-slate-300 '"
+              class="bg-gray-100 w-full h-12 rounded-md py-2 pl-9 pr-3"
+              :placeholder="`Enter your Last Name`"
+              v-model="user.register.last_name"
+            >
+          </div>
+          <div class="relative block">
+            <span class="absolute top-4 left-3">
+              <Icon
+                icon="mingcute:birthday-2-line"
+                class="w-5 h-5 text-slate-950"
+              />
+            </span>
+            <input
+              type="number"
+              :class="errorMessage ? 'border border-red-500 ' : 'border border-slate-300 '"
+              class="bg-gray-100 w-full h-12 rounded-md py-2 pl-9 pr-3"
+              :placeholder="`Enter your Age`"
+              v-model="user.register.age"
+            >
+          </div>
+          <div class="relative block">
+            <span class="absolute top-4 left-3">
+              <Icon
+                icon="icons8:gender"
+                class="w-5 h-5 text-slate-950"
+              />
+            </span>
+            <select
+              :class="errorMessage ? 'border border-red-500 ' : 'border border-slate-300 '"
+              class="bg-gray-100 w-full h-12 rounded-md py-2 pl-9 pr-3"
+              v-model="user.register.gender"
+            >
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="relative block">
+            <span class="absolute top-4 left-3">
+              <Icon
+                icon="mingcute:birthday-2-line"
+                class="w-5 h-5 text-slate-950"
+              />
+            </span>
+            <input
+              :class="errorMessage ? 'border border-red-500 ' : 'border border-slate-300 '"
+              class="bg-gray-100 w-full h-12 rounded-md py-2 pl-9 pr-3"
+              :placeholder="`Enter your City`"
+              v-model="user.register.city"
+            >
+          </div>
+          <!-- <base-input
             :error="errorMessage"
             icon="mdi:user"
             label="Username"
@@ -164,7 +280,7 @@ function handlePage () {
             label="City"
             :modelValue="user.register.city"
             @update:modelValue="(v) => user.register.city = v"
-          />
+          /> -->
           <p class="text-red-500 pt-0">{{ errorMessage }}</p>
         </div>
         <base-buton
