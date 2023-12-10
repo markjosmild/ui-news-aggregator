@@ -28,7 +28,6 @@ async function handlePost () {
         icon: 'success'
       })
     }
-    console.log(data)
   } catch (error) {
     errorMessage.value = error.response.data
   }
