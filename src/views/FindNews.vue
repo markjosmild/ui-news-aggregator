@@ -1,15 +1,14 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
+import { onMounted } from 'vue'
 import moment from 'moment'
+import { useNewsStore } from '../stores/newsStore'
 
-const articles = ref(null)
+const newsStore = useNewsStore()
 
 onMounted(async () => {
-  const { data } = await axios.get('https://newsapi.org/v2/top-headlines?country=ph&apiKey=b88b7d256f884e87ad5b59eb4eab5a39')
-  articles.value = data.articles
-
-  console.log(articles.value)
+  if (!newsStore?.articles) {
+    await newsStore.getFromExternalAPI()
+  }
 })
 
 function gotoUrl (url) {
@@ -25,11 +24,11 @@ function gotoUrl (url) {
       <h1 class="font-bold text-3xl pt-5">Hot news in the Philippines...</h1>
       <ol
         class="list-decimal pt-10"
-        v-if="articles"
+        v-if="newsStore?.articles"
       >
         <li
           class="pb-5 cursor-pointer"
-          v-for="(article, idx) in articles"
+          v-for="(article, idx) in newsStore.articles"
           @click="gotoUrl(article.url)"
           :key="idx"
         >

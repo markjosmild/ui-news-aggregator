@@ -5,8 +5,8 @@ import moment from 'moment'
 
 const newsStore = useNewsStore()
 
-onMounted(() => {
-  newsStore.get()
+onMounted(async () => {
+  await newsStore.get()
 })
 
 </script>
