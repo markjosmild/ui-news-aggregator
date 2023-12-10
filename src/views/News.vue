@@ -7,8 +7,8 @@ import moment from 'moment'
 const authStore = useAuthStore()
 const newsStore = useNewsStore()
 
-onMounted(() => {
-  newsStore.get({ user_id: authStore.auth.id })
+onMounted(async () => {
+  await newsStore.get({ user_id: authStore.auth.id })
 })
 </script>
 
