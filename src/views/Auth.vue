@@ -68,7 +68,7 @@ function handlePage () {
 </script>
 
 <template>
-  <div class="flex-1 flex text-sm">
+  <div class="min-h-screen flex text-sm">
     <div class="w-1/2 bg-white flex items-center justify-center">
       <form
         v-if="!isSignUp"

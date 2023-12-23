@@ -27,6 +27,23 @@ export const useNewsStore = defineStore('newsStore', () => {
     return data
   }
 
+  async function patch (payload) {
+    const { data } = await ServerApi
+      .patch('/news',
+        payload
+      )
+
+    return data
+  }
+
+  async function del (payload) {
+    const { data } = await ServerApi
+      .delete(`/news/${payload}`
+      )
+
+    return data
+  }
+
   async function getFromExternalAPI () {
     const { data } = await axios.get(
       'https://newsapi.org/v2/top-headlines?country=ph&apiKey=b88b7d256f884e87ad5b59eb4eab5a39'
@@ -40,6 +57,8 @@ export const useNewsStore = defineStore('newsStore', () => {
     create,
     get,
     getFromExternalAPI,
+    patch,
+    del,
     list,
     articles
   }

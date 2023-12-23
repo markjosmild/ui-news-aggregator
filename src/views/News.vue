@@ -2,7 +2,9 @@
 import { onMounted } from 'vue'
 import { useNewsStore } from '../stores/newsStore'
 import { useAuthStore } from '../stores/authStore'
+
 import moment from 'moment'
+import Swal from 'sweetalert2'
 
 const authStore = useAuthStore()
 const newsStore = useNewsStore()
@@ -10,6 +12,26 @@ const newsStore = useNewsStore()
 onMounted(async () => {
   await newsStore.get({ user_id: authStore.auth.id })
 })
+
+async function handleDelete (news) {
+  try {
+    const res = await Swal.fire({
+      title: 'Do you want to delete this news?',
+      showDenyButton: true,
+      confirmButtonText: 'yes',
+      denyButtonText: 'no'
+    })
+
+    if (res.isConfirmed) {
+      await newsStore.del(news.id)
+      await newsStore.get({ user_id: authStore.auth.id })
+
+      Swal.fire('Deleted!', 'News has been deleted succesfully!', 'success')
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
 </script>
 
 <template>
@@ -47,8 +69,14 @@ onMounted(async () => {
               class="absolute top-0 right-0 font-semibold flex gap-2"
               :key="idx"
             >
-              <span class="text-green-500 cursor-pointer">edit</span>
-              <span class="text-red-500 cursor-pointer">delete</span>
+              <span
+                @click.prevent=""
+                class="text-green-500 cursor-pointer"
+              >edit</span>
+              <span
+                @click.prevent="handleDelete(news)"
+                class="text-red-500 cursor-pointer"
+              >delete</span>
             </div>
 
           </div>
