@@ -37,7 +37,7 @@ async function handlePost () {
 
 <template>
   <nav-bar />
-  <div class="min-h-screen flex flex-col items-center">
+  <div class="flex-1 flex flex-col items-center">
     <div class="w-1/2 pt-5 flex flex-col gap-5">
       <h1 class="font-bold text-3xl">CREATE NEWS</h1>
       <div>

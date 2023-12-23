@@ -4,9 +4,7 @@ import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/authStore'
 import Swal from 'sweetalert2'
 
-import BaseInput from '../components/base/Input.vue'
 import BaseButon from '../components/base/Button.vue'
-import BaseSelect from '../components/base/Select.vue'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -70,7 +68,7 @@ function handlePage () {
 </script>
 
 <template>
-  <div class="min-h-screen flex text-sm">
+  <div class="flex-1 flex text-sm">
     <div class="w-1/2 bg-white flex items-center justify-center">
       <form
         v-if="!isSignUp"
