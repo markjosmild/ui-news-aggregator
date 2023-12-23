@@ -16,6 +16,13 @@ onMounted(async () => {
   <nav-bar />
   <div class="min-h-screen flex flex-col items-center">
     <div class="w-1/2">
+      <h1 class="font-bold text-3xl pt-5">Profile</h1>
+      <div>
+        <h1>{{ `Name: ${authStore.auth.first_name} ${authStore.auth.last_name}` }}</h1>
+        <h1>{{ `Age: ${authStore.auth.age}` }}</h1>
+        <h1>{{ `Gender: ${authStore.auth.gender}` }}</h1>
+        <h1>{{ `City: ${authStore.auth.city}` }}</h1>
+      </div>
       <h1 class="font-bold text-3xl pt-5">{{ newsStore?.list?.length ? 'Your news...' : 'Looks like you have no news posted yet...' }}</h1>
       <div
         class="pt-10"
