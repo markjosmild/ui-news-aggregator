@@ -48,7 +48,6 @@ function handleSignout () {
         <div class="hover:bg-black hover:text-white cursor-pointer">
           <router-link
             :to="{name: 'profile'}"
-            :exact-active-class="'border-b-2 border-white'"
           >Profile</router-link>
         </div>
         <div
