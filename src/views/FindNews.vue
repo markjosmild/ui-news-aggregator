@@ -12,7 +12,7 @@ onMounted(async () => {
 })
 
 function gotoUrl (url) {
-  window.location.href = url
+  window.open(url, '_blank')
 }
 
 </script>

@@ -7,6 +7,14 @@ export const useNewsStore = defineStore('newsStore', () => {
   const list = ref(null)
   const articles = ref(null)
 
+  async function pick (payload) {
+    const { data } = await ServerApi
+      .get(`/news/${payload}`
+      )
+
+    return data
+  }
+
   async function get (payload) {
     const { data } = await ServerApi
       .post('/news/list',
@@ -54,6 +62,7 @@ export const useNewsStore = defineStore('newsStore', () => {
   }
 
   return {
+    pick,
     create,
     get,
     getFromExternalAPI,

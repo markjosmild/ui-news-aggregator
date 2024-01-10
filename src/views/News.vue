@@ -2,12 +2,15 @@
 import { onMounted } from 'vue'
 import { useNewsStore } from '../stores/newsStore'
 import { useAuthStore } from '../stores/authStore'
+import { useRouter } from 'vue-router'
 
 import moment from 'moment'
 import Swal from 'sweetalert2'
 
 const authStore = useAuthStore()
 const newsStore = useNewsStore()
+
+const router = useRouter()
 
 onMounted(async () => {
   await newsStore.get({ user_id: authStore.auth.id })
@@ -70,7 +73,7 @@ async function handleDelete (news) {
               :key="idx"
             >
               <span
-                @click.prevent=""
+                @click.prevent="router.push(`/post/${news.id}`)"
                 class="text-green-500 cursor-pointer"
               >edit</span>
               <span
